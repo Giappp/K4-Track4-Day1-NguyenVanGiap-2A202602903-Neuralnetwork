@@ -69,6 +69,27 @@ Khuyến nghị dùng GPU miễn phí:
 
 Phần mềm: Python 3.10+, PyTorch ≥ 2.x, scikit-learn, numpy, pandas, matplotlib, openpyxl. Colab/Kaggle đã cài sẵn.
 
+### Môi trường Python cục bộ
+
+Môi trường `.venv` dùng Python 3.12. Cài lại từ thư mục gốc của repo bằng `uv`:
+
+```bash
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python --torch-backend cpu -r submission_2A202602903/code/requirements.txt pip
+source .venv/bin/activate
+```
+
+Lệnh trên cài PyTorch bản CPU cùng các thư viện của lab, JupyterLab và ipykernel. Máy hiện chưa có driver NVIDIA hoạt động nên môi trường cục bộ dùng CPU.
+
+VS Code đã có cấu hình interpreter `.venv/bin/python` trong `.vscode/settings.json`. Nếu IDE đang dùng interpreter khác, chạy **Python: Select Interpreter** và chọn `.venv/bin/python`. Khi mở `lab.ipynb`, chọn **Select Kernel → Python Environments → .venv**. Để mở notebook bằng trình duyệt:
+
+```bash
+source .venv/bin/activate
+jupyter lab
+```
+
+Thư mục `.venv/` được bỏ qua trong Git và không cần đưa vào bài nộp.
+
 ## 5. Luật chơi
 
 **Bạn phải tự viết:** model (class `nn.Module` do bạn định nghĩa, đúng shape ở mục 3), pipeline huấn luyện và đánh giá, ghi log, vẽ biểu đồ, lập bảng. Khung `code/` chỉ có chữ ký hàm và các bước gợi ý.
